@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+    tibiaMerchantTool:
+        image: tibia-merchant-tool
+        build: .
+        ports:
+            - "8085:8085"
+        volumes:
+            - database-volume:/app/db
+    tibiaPy:
+        image: galarzaa90/tibia.py
+        ports:
+            - "8000:8000"
+
+    tibiaWikiSql:
+        image: galarzaa90/tibiawiki-sql:6.0.0a1
+        ports:
+            - "8001:8001"
+        volumes:
+            - database-volume:/usr/src/app
+volumes:
+    database-volume:
